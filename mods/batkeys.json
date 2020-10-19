@@ -8,8 +8,19 @@
 	"import_url": "karabiner://karabiner/assets/complex_modifications/import?url=https://raw.githubusercontent.com/wayncheng/karabiner-mods/master/mods/batkeys.json",
 	"rules": [
 		{
-			"description": "Change Caps Lock to Escape if pressed alone, Command if pressed with other keys",
+			"description": "Caps ==> Cmd / Esc if alone / RShift+Caps -> Caps",
 			"manipulators": [
+				{
+					"type": "basic",
+					"from": {
+						"key_code": "caps_lock",
+						"modifiers": {
+							"mandatory": [ "right_shift" ],
+							"optional": [ "caps_lock" ]
+						}
+					},
+					"to": [ {"key_code": "caps_lock"} ]
+				},
 				{
 					"type": "basic",
 					"from": {
@@ -21,7 +32,6 @@
 				}
 			]
 		},
-
 		{
 			"description": "Fn ==> Hyper / Enter if alone",
 			"manipulators": [
@@ -46,7 +56,12 @@
 					"from": {
 						"key_code": "delete_or_backspace",
 						"modifiers": {
-							"mandatory": [ "left_command", "left_control", "left_option", "left_shift" ]
+							"mandatory": [
+								"left_command",
+								"left_control",
+								"left_option",
+								"left_shift"
+							]
 						}
 					},
 					"to": [ {"key_code": "delete_forward"} ]
@@ -179,60 +194,6 @@
 						{"key_code": "right_arrow", "modifiers": []}
 					],
 					"parameters": {"basic.simultaneous_threshold_milliseconds": 300}
-				}
-			]
-		},
-
-		{
-			"description": "CapsLock: Escape when pressed alone, Hyper when pressed with others, CapsLock when Shift+CapsLock",
-			"manipulators": [
-				{
-					"type": "basic",
-					"from": {
-						"key_code": "caps_lock",
-						"modifiers": {"mandatory": [ "shift" ], "optional": [ "caps_lock" ]}
-					},
-					"to": [ {"key_code": "caps_lock"} ]
-				},
-				{
-					"type": "basic",
-					"from": {
-						"key_code": "caps_lock",
-						"modifiers": {"optional": [ "any" ]}
-					},
-					"to": [
-						{
-							"key_code": "left_shift",
-							"modifiers": [ "left_command", "left_control", "left_option" ]
-						}
-					],
-					"to_if_alone": [ {"key_code": "escape"} ]
-				}
-			]
-		},
-
-		{
-			"description": "Caps ==> Cmd / Esc if alone / RShift+Caps -> Caps",
-			"manipulators": [
-				{
-					"type": "basic",
-					"from": {
-						"key_code": "caps_lock",
-						"modifiers": {
-							"mandatory": [ "right_shift" ],
-							"optional": [ "caps_lock" ]
-						}
-					},
-					"to": [ {"key_code": "caps_lock"} ]
-				},
-				{
-					"type": "basic",
-					"from": {
-						"key_code": "caps_lock",
-						"modifiers": {"optional": [ "any" ]}
-					},
-					"to": [ {"key_code": "left_command"} ],
-					"to_if_alone": [ {"key_code": "escape"} ]
 				}
 			]
 		}
