@@ -22,14 +22,19 @@
 		},
 
 		{
-			"description": "Fn: Hyper (cmd+opt+ctl+shift) when pressed with others, Escape if alone",
+			"description": "Fn ==> Hyper / Enter if alone / +backspace -> delete_forward",
 			"manipulators": [
 				{
 					"type": "basic",
 					"from": {
-						"key_code": "fn",
-						"modifiers": {"optional": [ "any" ]}
+						"key_code": "delete_or_backspace",
+						"modifiers": {"mandatory": [ "fn" ]}
 					},
+					"to": [ {"key_code": "delete_forward"} ]
+				},
+				{
+					"type": "basic",
+					"from": {"key_code": "fn", "modifiers": {"optional": [ "any" ]}},
 					"to": [
 						{
 							"key_code": "left_shift",
@@ -199,13 +204,16 @@
 		},
 
 		{
-			"description": "CAPS LOCK: Escape when alone, Cmd with others (Fn+Caps posts Caps)",
+			"description": "Caps ==> Cmd / Esc if alone / RShift+Caps -> Caps",
 			"manipulators": [
 				{
 					"type": "basic",
 					"from": {
 						"key_code": "caps_lock",
-						"modifiers": {"mandatory": [ "fn" ], "optional": [ "caps_lock" ]}
+						"modifiers": {
+							"mandatory": [ "right_shift" ],
+							"optional": [ "caps_lock" ]
+						}
 					},
 					"to": [ {"key_code": "caps_lock"} ]
 				},
