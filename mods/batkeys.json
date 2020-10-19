@@ -4,14 +4,17 @@
 	"homepage": "https://github.com/wayncheng/karabiner-mods",
 	"hostpage": "https://ke-complex-modifications.pqrs.org/",
 	"manual": "https://github.com/wayncheng/karabiner-mods",
-	"import_url": "karabiner://karabiner/assets/complex_modifications/import?url=https://gist.githubusercontent.com/wayncheng/a96a888cc2eb94e13f812ba799958e94/raw/26c9e6e5d011c780c5f415d2fc9ac029319c6cf4/batkeys.json",
+	"import_url": "karabiner://karabiner/assets/complex_modifications/import?url=https://raw.githubusercontent.com/wayncheng/karabiner-mods/master/mods/batkeys.json",
 	"rules": [
 		{
 			"description": "Change Caps Lock to Escape if pressed alone, Command if pressed with other keys",
 			"manipulators": [
 				{
 					"type": "basic",
-					"from": { "key_code": "caps_lock", "modifiers": {"optional": [ "any" ]} },
+					"from": {
+						"key_code": "caps_lock",
+						"modifiers": {"optional": [ "any" ]}
+					},
 					"to": [ {"key_code": "left_command"} ],
 					"to_if_alone": [ {"key_code": "escape"} ]
 				}
@@ -190,6 +193,29 @@
 							"modifiers": [ "left_command", "left_control", "left_option" ]
 						}
 					],
+					"to_if_alone": [ {"key_code": "escape"} ]
+				}
+			]
+		},
+
+		{
+			"description": "CAPS LOCK: Escape when alone, Cmd with others (Fn+Caps posts Caps)",
+			"manipulators": [
+				{
+					"type": "basic",
+					"from": {
+						"key_code": "caps_lock",
+						"modifiers": {"mandatory": [ "fn" ], "optional": [ "caps_lock" ]}
+					},
+					"to": [ {"key_code": "caps_lock"} ]
+				},
+				{
+					"type": "basic",
+					"from": {
+						"key_code": "caps_lock",
+						"modifiers": {"optional": [ "any" ]}
+					},
+					"to": [ {"key_code": "left_command"} ],
 					"to_if_alone": [ {"key_code": "escape"} ]
 				}
 			]
