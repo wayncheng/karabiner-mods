@@ -1,0 +1,12 @@
+{
+  "title": "Batkeys",
+  "author": "Wayne Cheng (wayne@che.ng)",
+  "homepage": "https://github.com/wayncheng/karabiner-mods",
+  "hostpage": "https://ke-complex-modifications.pqrs.org/",
+  "manual": "https://github.com/wayncheng/karabiner-mods",
+  "import_url": "karabiner://karabiner/assets/complex_modifications/import?url=https://raw.githubusercontent.com/___/batkeys.json",
+  "rules": [
+
+
+  ]
+}
